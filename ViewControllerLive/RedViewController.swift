@@ -9,22 +9,41 @@
 import UIKit
 
 class RedViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+	let nameVC = "Red"
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		print("View Controller \(nameVC): \(#function)")
+		updateLabel(nameFunc: "\(#function)")
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		print("View Controller \(nameVC): \(#function)")
+		updateLabel(nameFunc: "\(#function)")
+	}
+	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		print("View Controller \(nameVC): \(#function)")
+		updateLabel(nameFunc: "\(#function)")
+	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		print("View Controller \(nameVC): \(#function)")
+		updateLabel(nameFunc: "\(#function)")
+	}
+	
+	override func viewDidDisappear(_ animated: Bool) {
+		super.viewDidDisappear(animated)
+		print("View Controller \(nameVC): \(#function)")
+		updateLabel(nameFunc: "\(#function)")
+	}
+	
+	func updateLabel (nameFunc: String) {
+		if let label = UserDefaults.standard.string(forKey: "label") {
+			UserDefaults.standard.set("\(label)View Controller \(nameVC): \(nameFunc) \n", forKey: "label")
+		}
+	}	
 }

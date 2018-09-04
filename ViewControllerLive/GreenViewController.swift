@@ -9,22 +9,41 @@
 import UIKit
 
 class GreenViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+	let nameVC = "Green"
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		UserDefaults.standard.set("View Controller \(nameVC): \(#function) \n", forKey: "label")
+		print("View Controller \(nameVC): \(#function)")
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		updateLabel(nameFunc: "\(#function)")
+		print("View Controller \(nameVC): \(#function)")
+	}
+	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		updateLabel(nameFunc: "\(#function)")
+		print("View Controller \(nameVC): \(#function)")
+	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		updateLabel(nameFunc: "\(#function)")
+		print("View Controller \(nameVC): \(#function)")
+	}
+	
+	override func viewDidDisappear(_ animated: Bool) {
+		super.viewDidDisappear(animated)
+		updateLabel(nameFunc: "\(#function)")
+		print("View Controller \(nameVC): \(#function)")
+	}
+	
+	func updateLabel (nameFunc: String) {
+		if let label = UserDefaults.standard.string(forKey: "label") {
+			UserDefaults.standard.set("\(label)View Controller \(nameVC): \(nameFunc) \n", forKey: "label")
+		}
+	}
 }
